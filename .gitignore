@@ -21,12 +21,15 @@
 *.opendb
 *.VC.db
 
-# Godot (if chosen)
+# Godot 4
+.godot/
 .import/
 export.cfg
 export_presets.cfg
 .mono/
 data_*/
+*.translation
+*.import
 
 # Build outputs
 builds/
