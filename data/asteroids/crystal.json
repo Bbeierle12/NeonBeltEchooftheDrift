@@ -1,0 +1,99 @@
+{
+  "id": "crystal",
+  "displayName": "Crystal Asteroid",
+  "description": "Unstable crystalline structure. Refracts beam weapons. High value, fragile to energy damage.",
+  "tier": "uncommon",
+  "sizes": {
+    "large": {
+      "hp": 180,
+      "radius": 60,
+      "mass": 80,
+      "splitInto": {
+        "medium": {
+          "min": 2,
+          "max": 3
+        }
+      },
+      "scoreValue": 100
+    },
+    "medium": {
+      "hp": 90,
+      "radius": 30,
+      "mass": 35,
+      "splitInto": {
+        "small": {
+          "min": 2,
+          "max": 3
+        }
+      },
+      "scoreValue": 50
+    },
+    "small": {
+      "hp": 45,
+      "radius": 15,
+      "mass": 12,
+      "scoreValue": 25
+    }
+  },
+  "speedRange": {
+    "min": 60,
+    "max": 140
+  },
+  "rotationSpeedRange": {
+    "min": 15,
+    "max": 60
+  },
+  "traits": [
+    "refracts_beams",
+    "unstable",
+    "high_value"
+  ],
+  "damageModifiers": {
+    "kinetic": 0.7,
+    "energy": 1.4,
+    "explosive": 1.0
+  },
+  "mechanics": {
+    "refraction": {
+      "enabled": true,
+      "angleDeviation": 15,
+      "damagePassthrough": 0.9,
+      "exitPoints": "random_facet"
+    }
+  },
+  "dropTable": {
+    "scrap": {
+      "min": 8,
+      "max": 20,
+      "chance": 1.0
+    },
+    "flux": {
+      "min": 1,
+      "max": 3,
+      "chance": 0.6
+    },
+    "rare": {
+      "min": 0,
+      "max": 2,
+      "chance": 0.15
+    }
+  },
+  "spawnWeight": {
+    "rustfields": 0.2,
+    "prismVerge": 1.0,
+    "stormtrack": 0.3,
+    "silentArchive": 0.5
+  },
+  "assets": {
+    "spriteLarge": "asteroid_crystal_large",
+    "spriteMedium": "asteroid_crystal_medium",
+    "spriteSmall": "asteroid_crystal_small",
+    "glowEffect": "vfx_crystal_glow",
+    "refractVFX": "vfx_crystal_refract",
+    "destructionVFX": "vfx_crystal_shatter",
+    "impactVFX": "vfx_crystal_impact",
+    "destructionSFX": "sfx_crystal_shatter",
+    "impactSFX": "sfx_crystal_hit",
+    "refractSFX": "sfx_crystal_refract"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ricochet",
+  "displayName": "Ricochet Rounds",
+  "description": "Kinetic bullets bounce off Armored asteroids and walls. Bank shots for style points.",
+  "rarity": "common",
+  "tier": 1,
+  "type": "weapon_modifier",
+  "applicableTo": ["autocannon", "railgun"],
+  "modifiers": {
+    "ricochetEnabled": true,
+    "ricochetChance": 0.75,
+    "maxBounces": 2,
+    "damageRetentionPerBounce": 0.85,
+    "angleTolerance": 45
+  },
+  "synergies": [
+    {
+      "withUpgrade": "pierce",
+      "bonus": "Ricochets can pierce through one additional target",
+      "modifier": {
+        "pierceAfterRicochet": 1
+      }
+    },
+    {
+      "withUpgrade": "chain_crit",
+      "bonus": "Ricochet kills trigger chain lightning",
+      "modifier": {
+        "ricochetChain": true
+      }
+    }
+  ],
+  "styleBonus": {
+    "ricochetKill": {
+      "scoreMultiplier": 1.5,
+      "displayText": "BANK SHOT!"
+    },
+    "doubleBounceKill": {
+      "scoreMultiplier": 2.0,
+      "displayText": "DOUBLE BOUNCE!"
+    }
+  },
+  "unlockRequirement": {
+    "type": "research_node",
+    "nodeId": "kinetic_tree_1"
+  },
+  "shopPrice": 120,
+  "assets": {
+    "icon": "ui_upgrade_ricochet",
+    "ricochetVFX": "vfx_bullet_bounce",
+    "ricochetSFX": "sfx_ricochet"
+  }
+}

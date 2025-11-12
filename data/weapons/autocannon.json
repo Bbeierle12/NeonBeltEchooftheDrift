@@ -1,0 +1,52 @@
+{
+  "id": "autocannon",
+  "displayName": "AC-40 Autocannon",
+  "description": "Reliable kinetic repeater. High rate of fire, low heat. Upgrades into ricochet mayhem.",
+  "slot": "A",
+  "type": "kinetic",
+  "unlockRequirement": "starter",
+  "stats": {
+    "fireRate": 8.0,
+    "baseDamage": 12,
+    "heatPerShot": 0.5,
+    "critChance": 0.1,
+    "critMultiplier": 1.7,
+    "projectileSpeed": 800,
+    "maxRange": 1200,
+    "ammoType": "standard",
+    "ammoCapacity": 200
+  },
+  "tags": [
+    "starter",
+    "ricochet_upgradeable",
+    "chain_compatible",
+    "high_rof"
+  ],
+  "upgradePaths": {
+    "ricochet": {
+      "displayName": "Ricochet Rounds",
+      "description": "Bullets bounce off Armored asteroids and walls at shallow angles",
+      "modifier": {
+        "ricochetChance": 0.75,
+        "maxBounces": 2
+      }
+    },
+    "chainCrit": {
+      "displayName": "Chain Lightning",
+      "description": "Critical hits arc to 2 nearby targets for 50% damage",
+      "modifier": {
+        "chainOnCrit": true,
+        "chainTargets": 2,
+        "chainDamage": 0.5
+      }
+    }
+  },
+  "assets": {
+    "sprite": "weapon_autocannon",
+    "muzzleFlash": "vfx_autocannon_muzzle",
+    "projectile": "vfx_bullet_tracer",
+    "impactVFX": "vfx_kinetic_impact",
+    "fireSFX": "sfx_autocannon_fire",
+    "impactSFX": "sfx_kinetic_hit"
+  }
+}

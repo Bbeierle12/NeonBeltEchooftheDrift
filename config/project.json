@@ -1,0 +1,69 @@
+{
+  "project": {
+    "name": "NEON BELT: Echo of the Drift",
+    "version": "0.1.0-alpha",
+    "engine": "TBD",
+    "targetPlatforms": ["PC", "Console (stretch)"]
+  },
+  "settings": {
+    "physics": {
+      "fixedTimestep": 0.01666667,
+      "maxSubsteps": 4,
+      "gravity": [0, 0]
+    },
+    "rendering": {
+      "targetFramerate": 60,
+      "vsync": true,
+      "resolutionWidth": 1920,
+      "resolutionHeight": 1080,
+      "fullscreen": true
+    },
+    "audio": {
+      "masterVolume": 1.0,
+      "musicVolume": 0.7,
+      "sfxVolume": 0.8,
+      "ambienceVolume": 0.5
+    },
+    "gameplay": {
+      "defaultDifficulty": "normal",
+      "defaultControlScheme": "twin_stick",
+      "screenShakeIntensity": 0.7,
+      "flashIntensity": 0.8,
+      "gameSpeed": 1.0
+    },
+    "accessibility": {
+      "photosensitivityMode": false,
+      "colorblindMode": "none",
+      "reducedMotion": false,
+      "subtitles": true
+    },
+    "telemetry": {
+      "enabled": true,
+      "endpoint": "TBD",
+      "sendInterval": 60,
+      "batchSize": 100
+    }
+  },
+  "paths": {
+    "data": "data/",
+    "assets": "assets/",
+    "saves": "user_data/saves/",
+    "config": "user_data/config/",
+    "logs": "logs/",
+    "cache": ".cache/"
+  },
+  "development": {
+    "debugMode": true,
+    "hotReload": true,
+    "showFPS": true,
+    "showColliders": false,
+    "godMode": false,
+    "unlockAll": false,
+    "skipIntro": true
+  },
+  "build": {
+    "bundleIdentifier": "com.studio.neonbelt",
+    "buildNumber": 1,
+    "compressionLevel": "high"
+  }
+}

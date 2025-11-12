@@ -1,0 +1,89 @@
+{
+  "id": "gunship",
+  "displayName": "Anvil-4",
+  "archetype": "Gunship",
+  "description": "Guns blazing. Sustained DPS machine. Overcharge lets you become a bullet hell boss.",
+  "unlockRequirement": "starter",
+  "stats": {
+    "hull": 140,
+    "shields": 100,
+    "speed": 180,
+    "turnRate": 260,
+    "acceleration": 600,
+    "energy": 120,
+    "energyRegen": 12,
+    "heatCapacity": 140,
+    "heatDissipation": 10
+  },
+  "hardpoints": {
+    "weaponSlots": ["A", "B"],
+    "utilitySlots": 2,
+    "internalBays": 1
+  },
+  "signature": {
+    "id": "overcharge",
+    "displayName": "Overcharge",
+    "description": "Doubles rate-of-fire for 3 seconds. Heat generation skyrockets. Go out in a blaze of glory.",
+    "mechanics": {
+      "duration": 3.0,
+      "rofMultiplier": 2.0,
+      "heatMultiplier": 3.0,
+      "cooldown": 12.0,
+      "visualEffect": "weapon_glow"
+    }
+  },
+  "passive": {
+    "id": "ammo_bay",
+    "displayName": "Internal Ammo Bay",
+    "description": "+1 internal ammo bay slot. Can carry more explosives and kinetic rounds.",
+    "mechanics": {
+      "ammoBaySlots": 1,
+      "ammoCapacityBonus": 0.2
+    }
+  },
+  "playstyle": {
+    "difficulty": "medium",
+    "tags": ["sustained_dps", "ammo_hungry", "tanky"],
+    "recommendedWeapons": ["autocannon", "rocket", "flak"],
+    "strengths": [
+      "High sustained damage output",
+      "Tankier than Interceptor",
+      "Overcharge creates explosive windows",
+      "Extra ammo capacity"
+    ],
+    "weaknesses": [
+      "Slower and less maneuverable",
+      "Heat management critical during Overcharge",
+      "Ammo-dependent builds need economy"
+    ]
+  },
+  "unlocks": {
+    "masteries": [
+      {
+        "id": "overcharge_master",
+        "displayName": "Firepower Incarnate",
+        "description": "Deal 50,000 damage during Overcharge in a single run",
+        "reward": "anvil_warzone_skin"
+      },
+      {
+        "id": "no_venting",
+        "displayName": "Cool Under Pressure",
+        "description": "Win a run without manually venting heat",
+        "reward": "anvil_industrial_skin"
+      }
+    ]
+  },
+  "assets": {
+    "sprite": "ship_anvil",
+    "thrusterVFX": "vfx_anvil_thrust",
+    "boostVFX": "vfx_anvil_boost",
+    "overchargeVFX": "vfx_overcharge_glow",
+    "weaponGlowVFX": "vfx_weapon_overheat",
+    "damageState1": "ship_anvil_damage_1",
+    "damageState2": "ship_anvil_damage_2",
+    "engineSFX": "sfx_anvil_engine",
+    "boostSFX": "sfx_anvil_boost",
+    "overchargeSFX": "sfx_overcharge_activate",
+    "overchargeLoopSFX": "sfx_overcharge_loop"
+  }
+}

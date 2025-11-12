@@ -1,0 +1,85 @@
+{
+  "id": "interceptor",
+  "displayName": "Viper Mk-II",
+  "archetype": "Interceptor",
+  "description": "Precision hunter. High-skill, high-reward glass cannon. Time slows when danger approaches.",
+  "unlockRequirement": "starter",
+  "stats": {
+    "hull": 100,
+    "shields": 75,
+    "speed": 220,
+    "turnRate": 340,
+    "acceleration": 800,
+    "energy": 100,
+    "energyRegen": 15,
+    "heatCapacity": 100,
+    "heatDissipation": 12
+  },
+  "hardpoints": {
+    "weaponSlots": ["A", "B"],
+    "utilitySlots": 2
+  },
+  "signature": {
+    "id": "bullet_time",
+    "displayName": "Bullet Time",
+    "description": "Automatically time-dilates to 70% when collision imminent (<0.4s). Gives you a split-second to react.",
+    "mechanics": {
+      "triggerCondition": "collision_within_400ms",
+      "timeDilation": 0.7,
+      "maxDuration": 1.5,
+      "cooldown": 8.0,
+      "visualEffect": "chromatic_aberration"
+    }
+  },
+  "passive": {
+    "id": "zero_heat_crit",
+    "displayName": "Cold Precision",
+    "description": "+15% crit chance when heat is at 0%",
+    "mechanics": {
+      "critBonus": 0.15,
+      "heatThreshold": 0
+    }
+  },
+  "playstyle": {
+    "difficulty": "high",
+    "tags": ["precision", "glass_cannon", "high_skill_ceiling"],
+    "recommendedWeapons": ["autocannon", "railgun", "beam_lance"],
+    "strengths": [
+      "Exceptional evasion with Bullet Time",
+      "High crit potential with heat management",
+      "Fast repositioning"
+    ],
+    "weaknesses": [
+      "Low health pool",
+      "Requires excellent positioning",
+      "Punishing if Bullet Time on cooldown"
+    ]
+  },
+  "unlocks": {
+    "masteries": [
+      {
+        "id": "no_shields_win",
+        "displayName": "Glass Master",
+        "description": "Win a run without using shields",
+        "reward": "viper_chrome_skin"
+      },
+      {
+        "id": "perfect_bullet_time",
+        "displayName": "Reflex Savant",
+        "description": "Trigger Bullet Time 50 times in a single run",
+        "reward": "viper_hud_variant"
+      }
+    ]
+  },
+  "assets": {
+    "sprite": "ship_viper",
+    "thrusterVFX": "vfx_viper_thrust",
+    "boostVFX": "vfx_viper_boost",
+    "bulletTimeVFX": "vfx_bullet_time",
+    "damageState1": "ship_viper_damage_1",
+    "damageState2": "ship_viper_damage_2",
+    "engineSFX": "sfx_viper_engine",
+    "boostSFX": "sfx_viper_boost",
+    "bulletTimeSFX": "sfx_bullet_time_activate"
+  }
+}

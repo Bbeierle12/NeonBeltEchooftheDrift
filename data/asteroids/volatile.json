@@ -1,0 +1,95 @@
+{
+  "id": "volatile",
+  "displayName": "Volatile Asteroid",
+  "description": "Hazardous explosive rock. Pulses faster before detonation. Must be defused or destroyed quickly. Chain reactions possible.",
+  "tier": "hazard",
+  "sizes": {
+    "large": {
+      "hp": 180,
+      "radius": 56,
+      "mass": 70,
+      "scoreValue": 200
+    }
+  },
+  "speedRange": {
+    "min": 40,
+    "max": 100
+  },
+  "rotationSpeedRange": {
+    "min": 5,
+    "max": 30
+  },
+  "traits": [
+    "explosive",
+    "defusable",
+    "chain_reaction",
+    "high_risk_high_reward"
+  ],
+  "damageModifiers": {
+    "kinetic": 1.0,
+    "energy": 1.0,
+    "explosive": 0.5
+  },
+  "mechanics": {
+    "pulse": {
+      "enabled": true,
+      "baseInterval": 2.0,
+      "accelerationRate": 0.85,
+      "visualWarning": true,
+      "audioWarning": true
+    },
+    "defuse": {
+      "enabled": true,
+      "channelTime": 1.0,
+      "interruptOnDamage": true,
+      "successReward": "extra_loot"
+    },
+    "explosion": {
+      "damage": 150,
+      "radius": 220,
+      "chainReaction": true,
+      "chainRadius": 300,
+      "screenShake": "heavy"
+    }
+  },
+  "dropTable": {
+    "scrap": {
+      "min": 15,
+      "max": 35,
+      "chance": 1.0
+    },
+    "flux": {
+      "min": 2,
+      "max": 5,
+      "chance": 0.8
+    },
+    "rare": {
+      "min": 1,
+      "max": 3,
+      "chance": 0.3
+    },
+    "defuseBonus": {
+      "scrapMultiplier": 1.5,
+      "fluxBonus": 2,
+      "rareChanceBonus": 0.2
+    }
+  },
+  "spawnWeight": {
+    "rustfields": 0.3,
+    "prismVerge": 0.5,
+    "stormtrack": 0.7,
+    "silentArchive": 0.4
+  },
+  "assets": {
+    "spriteLarge": "asteroid_volatile_large",
+    "pulseGlow": "vfx_volatile_pulse",
+    "defuseBeam": "vfx_mining_beam",
+    "explosionVFX": "vfx_volatile_explosion",
+    "chainExplosionVFX": "vfx_chain_explosion",
+    "defuseVFX": "vfx_volatile_defused",
+    "pulseSFX": "sfx_volatile_pulse",
+    "warningBeepSFX": "sfx_volatile_warning",
+    "explosionSFX": "sfx_explosion_volatile",
+    "defuseSFX": "sfx_volatile_defuse"
+  }
+}

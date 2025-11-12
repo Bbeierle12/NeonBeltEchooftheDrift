@@ -1,0 +1,67 @@
+{
+  "id": "beam_lance",
+  "displayName": "M7 Beam Lance",
+  "description": "Sustained energy beam that ramps damage over time. Refracts through Crystal asteroids for trick shots.",
+  "slot": "B",
+  "type": "energy",
+  "unlockRequirement": "starter",
+  "stats": {
+    "dpsBase": 40,
+    "dpsRamp": 110,
+    "rampTime": 1.5,
+    "heatPerSecond": 18,
+    "maxRange": 800,
+    "beamWidth": 8,
+    "refractable": true
+  },
+  "tags": [
+    "starter",
+    "beam",
+    "refract_compatible",
+    "ramp_damage",
+    "energy"
+  ],
+  "upgradePaths": {
+    "extraRefract": {
+      "displayName": "Prism Array",
+      "description": "Beam refracts up to 5 times (from 3)",
+      "modifier": {
+        "maxRefracts": 5
+      }
+    },
+    "fasterRamp": {
+      "displayName": "Capacitor Overload",
+      "description": "Ramp time reduced to 0.8s, max DPS increased to 140",
+      "modifier": {
+        "rampTime": 0.8,
+        "dpsRamp": 140
+      }
+    },
+    "harmonic": {
+      "displayName": "Harmonic Resonance",
+      "description": "Beam pulses with music rhythm; on-beat hits deal 2x damage",
+      "modifier": {
+        "harmonic": true,
+        "onBeatMultiplier": 2.0
+      }
+    }
+  },
+  "mechanics": {
+    "refraction": {
+      "angleDeviation": 15,
+      "damageRetention": 0.9,
+      "maxRefracts": 3
+    },
+    "rampCurve": "quadratic"
+  },
+  "assets": {
+    "sprite": "weapon_beam_lance",
+    "beamVFX": "vfx_beam_lance_ray",
+    "muzzleGlow": "vfx_beam_lance_glow",
+    "refractVFX": "vfx_beam_refract",
+    "impactVFX": "vfx_energy_burn",
+    "fireSFX": "sfx_beam_lance_loop",
+    "refractSFX": "sfx_beam_refract",
+    "impactSFX": "sfx_energy_hit"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "id": "rocket",
+  "displayName": "Phoenix-2 Rocket Pod",
+  "description": "High-damage explosive missiles. Limited ammo. Leaves fiery exhaust trails you can weaponize.",
+  "slot": "B",
+  "type": "explosive",
+  "unlockRequirement": "starter",
+  "stats": {
+    "fireRate": 1.5,
+    "directDamage": 120,
+    "aoeDamage": 40,
+    "aoeRadius": 80,
+    "ammoCapacity": 6,
+    "projectileSpeed": 400,
+    "lockOnTime": 0.8,
+    "maxRange": 1500
+  },
+  "tags": [
+    "starter",
+    "explosive",
+    "ammo_limited",
+    "aoe",
+    "lock_on"
+  ],
+  "craftingRecipe": {
+    "scrap": 2,
+    "flux": 1
+  },
+  "upgradePaths": {
+    "multiLock": {
+      "displayName": "Multi-Lock Targeting",
+      "description": "Lock onto 3 targets simultaneously",
+      "modifier": {
+        "maxLockTargets": 3
+      }
+    },
+    "clusterWarhead": {
+      "displayName": "Cluster Warhead",
+      "description": "Rocket splits into 5 submunitions before impact",
+      "modifier": {
+        "cluster": true,
+        "submunitions": 5,
+        "submunitionDamage": 30
+      }
+    },
+    "exhaustFire": {
+      "displayName": "Booster Burn",
+      "description": "Rocket trail leaves lingering fire (20 DPS, 3s duration)",
+      "modifier": {
+        "trailFire": true,
+        "trailDPS": 20,
+        "trailDuration": 3.0
+      }
+    }
+  },
+  "mechanics": {
+    "lockOn": {
+      "enabled": true,
+      "time": 0.8,
+      "trackingStrength": 0.95,
+      "maxAngle": 45
+    },
+    "manualFire": {
+      "enabled": true,
+      "description": "Fire without lock for immediate launch"
+    }
+  },
+  "assets": {
+    "sprite": "weapon_rocket_pod",
+    "muzzleFlash": "vfx_rocket_launch",
+    "projectile": "vfx_rocket_missile",
+    "exhaustTrail": "vfx_rocket_trail",
+    "explosionVFX": "vfx_rocket_explosion",
+    "lockOnUI": "ui_rocket_lock",
+    "fireSFX": "sfx_rocket_launch",
+    "lockOnSFX": "sfx_rocket_lock_beep",
+    "explosionSFX": "sfx_explosion_large"
+  }
+}

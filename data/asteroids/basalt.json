@@ -1,0 +1,87 @@
+{
+  "id": "basalt",
+  "displayName": "Basalt Asteroid",
+  "description": "Common rock. Predictable trajectories. Breaks into smaller fragments when destroyed.",
+  "tier": "common",
+  "sizes": {
+    "large": {
+      "hp": 240,
+      "radius": 64,
+      "mass": 100,
+      "splitInto": {
+        "medium": {
+          "min": 2,
+          "max": 3
+        }
+      },
+      "scoreValue": 50
+    },
+    "medium": {
+      "hp": 120,
+      "radius": 32,
+      "mass": 40,
+      "splitInto": {
+        "small": {
+          "min": 3,
+          "max": 4
+        }
+      },
+      "scoreValue": 25
+    },
+    "small": {
+      "hp": 60,
+      "radius": 16,
+      "mass": 15,
+      "scoreValue": 10
+    }
+  },
+  "speedRange": {
+    "min": 50,
+    "max": 120
+  },
+  "rotationSpeedRange": {
+    "min": 10,
+    "max": 45
+  },
+  "traits": [
+    "predictable",
+    "standard_split"
+  ],
+  "damageModifiers": {
+    "kinetic": 1.0,
+    "energy": 1.0,
+    "explosive": 1.0
+  },
+  "dropTable": {
+    "scrap": {
+      "min": 5,
+      "max": 15,
+      "chance": 1.0
+    },
+    "flux": {
+      "min": 0,
+      "max": 0,
+      "chance": 0.0
+    },
+    "rare": {
+      "min": 0,
+      "max": 1,
+      "chance": 0.05
+    }
+  },
+  "spawnWeight": {
+    "rustfields": 1.0,
+    "prismVerge": 0.4,
+    "stormtrack": 0.6,
+    "silentArchive": 0.3
+  },
+  "assets": {
+    "spriteLarge": "asteroid_basalt_large",
+    "spriteMedium": "asteroid_basalt_medium",
+    "spriteSmall": "asteroid_basalt_small",
+    "destructionVFX": "vfx_rock_shatter",
+    "impactVFX": "vfx_rock_impact",
+    "destructionSFX": "sfx_rock_break",
+    "impactSFX": "sfx_rock_hit"
+  }
+}

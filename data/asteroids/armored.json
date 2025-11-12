@@ -1,0 +1,99 @@
+{
+  "id": "armored",
+  "displayName": "Armored Asteroid",
+  "description": "Dense nickel-iron core. Ricochets kinetic rounds. Weak to railguns. Ejects dangerous Slugs on destruction.",
+  "tier": "tank",
+  "sizes": {
+    "large": {
+      "hp": 500,
+      "radius": 70,
+      "mass": 150,
+      "scoreValue": 150
+    }
+  },
+  "speedRange": {
+    "min": 30,
+    "max": 80
+  },
+  "rotationSpeedRange": {
+    "min": 5,
+    "max": 20
+  },
+  "traits": [
+    "heavily_armored",
+    "ricochet_bullets",
+    "slow_moving",
+    "ejects_slugs"
+  ],
+  "damageModifiers": {
+    "kinetic": 0.6,
+    "energy": 1.0,
+    "explosive": 1.2
+  },
+  "mechanics": {
+    "ricochet": {
+      "enabled": true,
+      "angleThreshold": 20,
+      "reflection": "angle_of_incidence",
+      "velocityRetention": 0.95
+    },
+    "railgunWeakness": {
+      "enabled": true,
+      "damageMultiplier": 1.6,
+      "ignoreRicochet": true
+    },
+    "slugEject": {
+      "enabled": true,
+      "count": {
+        "min": 3,
+        "max": 5
+      },
+      "slug": {
+        "damage": 40,
+        "speed": 300,
+        "lifetime": 2.0,
+        "piercing": true
+      }
+    }
+  },
+  "dropTable": {
+    "scrap": {
+      "min": 20,
+      "max": 40,
+      "chance": 1.0
+    },
+    "metal": {
+      "min": 3,
+      "max": 8,
+      "chance": 0.9
+    },
+    "flux": {
+      "min": 0,
+      "max": 1,
+      "chance": 0.2
+    },
+    "rare": {
+      "min": 0,
+      "max": 2,
+      "chance": 0.1
+    }
+  },
+  "spawnWeight": {
+    "rustfields": 1.0,
+    "prismVerge": 0.3,
+    "stormtrack": 0.5,
+    "silentArchive": 0.6
+  },
+  "assets": {
+    "spriteLarge": "asteroid_armored_large",
+    "armorPlating": "vfx_armor_gleam",
+    "ricochetVFX": "vfx_bullet_ricochet",
+    "destructionVFX": "vfx_armor_shatter",
+    "slugVFX": "vfx_slug_projectile",
+    "impactVFX": "vfx_armor_impact",
+    "ricochetSFX": "sfx_bullet_ricochet",
+    "destructionSFX": "sfx_metal_break",
+    "slugEjectSFX": "sfx_slug_launch",
+    "impactSFX": "sfx_armor_hit"
+  }
+}

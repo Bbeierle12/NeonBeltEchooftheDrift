@@ -1,0 +1,51 @@
+{
+  "id": "pierce",
+  "displayName": "Armor-Piercing Rounds",
+  "description": "Projectiles pass through targets. Line up your shots and watch them drop.",
+  "rarity": "common",
+  "tier": 1,
+  "type": "weapon_modifier",
+  "applicableTo": ["autocannon", "railgun"],
+  "modifiers": {
+    "pierceEnabled": true,
+    "maxPierceTargets": 3,
+    "damageRetentionPerPierce": 0.8
+  },
+  "synergies": [
+    {
+      "withUpgrade": "ricochet",
+      "bonus": "Ricochets can pierce through one additional target",
+      "modifier": {
+        "maxPierceTargets": 4
+      }
+    },
+    {
+      "withUpgrade": "beam_refract_plus",
+      "bonus": "Beam gains +1 pierce after each refract",
+      "modifier": {
+        "refractPierceStack": true
+      }
+    }
+  ],
+  "styleBonus": {
+    "tripleKill": {
+      "scoreMultiplier": 2.0,
+      "displayText": "TRIPLE PIERCE!"
+    },
+    "lineKill": {
+      "condition": "kill_5_in_line",
+      "scoreMultiplier": 3.0,
+      "displayText": "COLLATERAL!"
+    }
+  },
+  "unlockRequirement": {
+    "type": "research_node",
+    "nodeId": "kinetic_tree_1"
+  },
+  "shopPrice": 100,
+  "assets": {
+    "icon": "ui_upgrade_pierce",
+    "pierceVFX": "vfx_bullet_pierce_trail",
+    "pierceSFX": "sfx_pierce_through"
+  }
+}

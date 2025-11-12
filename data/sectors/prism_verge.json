@@ -1,0 +1,72 @@
+{
+  "id": "prism_verge",
+  "displayName": "Prism Verge",
+  "description": "Crystalline asteroid field refracts light and beams. Grav-lens hazards bend trajectories. Home of the Quarrymind.",
+  "tier": 2,
+  "difficulty": "medium",
+  "unlockRequirement": {
+    "type": "complete_sector",
+    "sectorId": "rustfields"
+  },
+  "structure": {
+    "waveCount": 7,
+    "miniBossWave": 4,
+    "bossWave": 7,
+    "shopAfterWave": 4,
+    "eventChance": 0.3
+  },
+  "asteroidSpawnWeights": {
+    "basalt": 0.3,
+    "crystal": 1.0,
+    "volatile": 0.5,
+    "armored": 0.2
+  },
+  "hazardSpawns": {
+    "grav_lens": {
+      "chance": 0.4,
+      "countRange": [1, 3]
+    },
+    "comet": {
+      "chance": 0.1,
+      "countRange": [1, 1]
+    }
+  },
+  "enemySpawnWeights": {
+    "ufo_sentry": 0.6,
+    "scavenger_drone": 0.8,
+    "corsair_frigate": 0.2
+  },
+  "boss": {
+    "id": "quarrymind",
+    "displayName": "The Quarrymind",
+    "description": "A magnetic brain that assembles asteroid armor mid-fight. Strip the armor to expose its core."
+  },
+  "difficultyCurve": {
+    "asteroidSpeedMultiplier": 1.15,
+    "spawnDensityMultiplier": 1.08,
+    "hostileAccuracyBonus": 0.15
+  },
+  "rewards": {
+    "baseCredits": 500,
+    "baseResearchData": 50,
+    "bossKillBonus": {
+      "credits": 300,
+      "researchData": 30
+    }
+  },
+  "theme": {
+    "visualStyle": "crystalline_refraction",
+    "colorPalette": ["cyan", "violet", "white", "prismatic"],
+    "lightingEffects": ["refraction_caustics", "lens_flares"],
+    "particleEffects": ["crystal_dust", "light_rays"]
+  },
+  "assets": {
+    "background": "bg_prism_verge",
+    "backgroundParallax": ["bg_prism_far", "bg_prism_mid", "bg_prism_near"],
+    "ambientMusic": "music_prism_verge_exploration",
+    "combatMusic": "music_prism_verge_combat",
+    "bossMusic": "music_quarrymind_fight",
+    "ambientSFX": ["sfx_crystal_chime", "sfx_space_hum"],
+    "transitionVFX": "vfx_prism_warp"
+  }
+}
