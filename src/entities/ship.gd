@@ -60,6 +60,11 @@ var shields_disabled_timer: float = 0.0
 # Input state
 var using_mouse_aim: bool = true
 
+# Weapons
+var weapon_slot_a: Weapon = null
+var weapon_slot_b: Weapon = null
+var active_weapon: Weapon = null
+
 # Screen bounds
 var screen_size: Vector2
 
@@ -91,6 +96,10 @@ func initialize(ship_id: String) -> void:
 	current_hull = max_hull
 	current_shields = max_shields
 	current_heat = 0.0
+
+	# Equip starter weapons
+	equip_weapon("autocannon", "A")
+	equip_weapon("beam_lance", "B")
 
 	print("[Ship] Initialized: ", ship_data.get("displayName", ship_id))
 
@@ -143,6 +152,15 @@ func _process_input() -> void:
 
 	if Input.is_action_just_pressed("vent_heat"):
 		_start_heat_vent()
+
+	# Weapon firing
+	if Input.is_action_pressed("fire"):
+		if active_weapon:
+			active_weapon.fire(aim_direction)
+	else:
+		# Stop beam weapons when fire is released
+		if active_weapon and active_weapon is BeamLance:
+			active_weapon.stop_firing()
 
 
 func _process_flight(delta: float) -> void:
@@ -354,3 +372,38 @@ func is_overdriving() -> bool:
 func get_heat_percentage() -> float:
 	"""Get heat as percentage (0-1)"""
 	return current_heat / max_heat
+
+
+func equip_weapon(weapon_id: String, slot: String) -> void:
+	"""Equip a weapon to a slot"""
+	var weapon: Weapon = null
+
+	# Create appropriate weapon instance
+	match weapon_id:
+		"autocannon":
+			weapon = preload("res://src/weapons/autocannon.gd").new()
+		"beam_lance":
+			weapon = preload("res://src/weapons/beam_lance.gd").new()
+		_:
+			push_error("[Ship] Unknown weapon: ", weapon_id)
+			return
+
+	# Add to scene tree
+	add_child(weapon)
+
+	# Initialize weapon
+	weapon.initialize(weapon_id)
+
+	# Assign to slot
+	match slot:
+		"A":
+			if weapon_slot_a:
+				weapon_slot_a.queue_free()
+			weapon_slot_a = weapon
+			active_weapon = weapon  # Default to slot A
+		"B":
+			if weapon_slot_b:
+				weapon_slot_b.queue_free()
+			weapon_slot_b = weapon
+
+	print("[Ship] Equipped ", weapon_id, " to slot ", slot)
