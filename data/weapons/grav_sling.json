@@ -1,0 +1,23 @@
+{
+  "id": "grav_sling",
+  "name": "Grav Sling",
+  "type": "exotic",
+  "slot_type": "heavy",
+  "description": "Create gravity wells that pull asteroids together, then launch them. Physics-based chaos weapon.",
+
+  "well_duration": 2.5,
+  "well_radius": 180,
+  "pull_strength": 250,
+  "launch_damage_mult": 0.5,
+  "fire_rate": 1.5,
+  "heat_per_shot": 25,
+
+  "ammo_type": "energy",
+  "ammo_capacity": 0,
+  "ammo_per_shot": 0,
+
+  "tags": ["exotic", "gravity", "utility"],
+  "rarity": "rare",
+  "shop_price": 1200,
+  "scrap_value": 300
+}

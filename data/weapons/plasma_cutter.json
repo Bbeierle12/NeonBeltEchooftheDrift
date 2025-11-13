@@ -1,0 +1,22 @@
+{
+  "id": "plasma_cutter",
+  "name": "Plasma Cutter",
+  "type": "exotic",
+  "slot_type": "standard",
+  "description": "Short-range cutting beam that melts through armor. Deals massive damage at close range.",
+
+  "damage_per_sec": 180,
+  "max_range": 150,
+  "heat_per_sec": 35,
+  "armor_penetration": 0.5,
+  "damage_falloff_start": 80,
+
+  "ammo_type": "energy",
+  "ammo_capacity": 0,
+  "ammo_per_shot": 0,
+
+  "tags": ["exotic", "close_range", "armor_pen"],
+  "rarity": "rare",
+  "shop_price": 950,
+  "scrap_value": 240
+}

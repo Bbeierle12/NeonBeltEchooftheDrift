@@ -164,8 +164,8 @@ func _process_input() -> void:
 			# Update charge for charge weapons
 			if active_weapon is Railgun:
 				active_weapon.update_charge(delta)
-			# Regular firing for other weapons
-			elif not active_weapon is BeamLance or not active_weapon.is_beam_active:
+			# Regular firing for other weapons (skip if beam is already active)
+			elif not (active_weapon is BeamLance and active_weapon.is_beam_active) and not (active_weapon is PlasmaCutter and active_weapon.is_beam_active):
 				active_weapon.fire(aim_direction)
 	else:
 		# Release charged shot
@@ -173,6 +173,8 @@ func _process_input() -> void:
 			active_weapon.release_shot(aim_direction)
 		# Stop beam weapons when fire is released
 		if active_weapon and active_weapon is BeamLance:
+			active_weapon.stop_firing()
+		if active_weapon and active_weapon is PlasmaCutter:
 			active_weapon.stop_firing()
 
 
@@ -405,6 +407,14 @@ func equip_weapon(weapon_id: String, slot: String) -> void:
 			weapon = preload("res://src/weapons/flak.gd").new()
 		"mines":
 			weapon = preload("res://src/weapons/mines.gd").new()
+		"grav_sling":
+			weapon = preload("res://src/weapons/grav_sling.gd").new()
+		"arc_harpoon":
+			weapon = preload("res://src/weapons/arc_harpoon.gd").new()
+		"pulse_laser":
+			weapon = preload("res://src/weapons/pulse_laser.gd").new()
+		"plasma_cutter":
+			weapon = preload("res://src/weapons/plasma_cutter.gd").new()
 		_:
 			push_error("[Ship] Unknown weapon: ", weapon_id)
 			return

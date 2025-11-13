@@ -1,0 +1,26 @@
+{
+  "id": "arc_harpoon",
+  "name": "Arc Harpoon",
+  "type": "exotic",
+  "slot_type": "heavy",
+  "description": "Tether targets with arcing electricity. Chains lightning between tethered enemies.",
+
+  "damage_initial": 80,
+  "damage_arc": 40,
+  "arc_damage_per_sec": 60,
+  "tether_duration": 4.0,
+  "max_tethers": 3,
+  "chain_range": 200,
+  "fire_rate": 2.0,
+  "heat_per_shot": 20,
+  "projectile_speed": 1200,
+
+  "ammo_type": "energy",
+  "ammo_capacity": 0,
+  "ammo_per_shot": 0,
+
+  "tags": ["exotic", "chain", "tether"],
+  "rarity": "rare",
+  "shop_price": 1100,
+  "scrap_value": 275
+}
