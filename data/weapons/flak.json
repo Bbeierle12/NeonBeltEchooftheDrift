@@ -1,0 +1,24 @@
+{
+  "id": "flak",
+  "name": "Flak Cannon",
+  "type": "explosive",
+  "slot_type": "standard",
+  "description": "Timed airburst shells create area denial. Excellent against clusters.",
+
+  "damage_direct": 30,
+  "damage_aoe": 50,
+  "aoe_radius": 100,
+  "airburst_time": 0.8,
+  "fire_rate": 4.0,
+  "heat_per_shot": 8,
+  "projectile_speed": 700,
+
+  "ammo_type": "explosive",
+  "ammo_capacity": 120,
+  "ammo_per_shot": 1,
+
+  "tags": ["area_denial", "airburst", "explosive"],
+  "rarity": "uncommon",
+  "shop_price": 600,
+  "scrap_value": 150
+}

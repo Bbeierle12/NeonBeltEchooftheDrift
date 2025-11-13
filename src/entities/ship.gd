@@ -154,10 +154,23 @@ func _process_input() -> void:
 		_start_heat_vent()
 
 	# Weapon firing
+	if Input.is_action_just_pressed("fire"):
+		# Start charging for charge weapons
+		if active_weapon and active_weapon is Railgun:
+			active_weapon.start_charging()
+
 	if Input.is_action_pressed("fire"):
 		if active_weapon:
-			active_weapon.fire(aim_direction)
+			# Update charge for charge weapons
+			if active_weapon is Railgun:
+				active_weapon.update_charge(delta)
+			# Regular firing for other weapons
+			elif not active_weapon is BeamLance or not active_weapon.is_beam_active:
+				active_weapon.fire(aim_direction)
 	else:
+		# Release charged shot
+		if active_weapon and active_weapon is Railgun:
+			active_weapon.release_shot(aim_direction)
 		# Stop beam weapons when fire is released
 		if active_weapon and active_weapon is BeamLance:
 			active_weapon.stop_firing()
@@ -386,6 +399,12 @@ func equip_weapon(weapon_id: String, slot: String) -> void:
 			weapon = preload("res://src/weapons/beam_lance.gd").new()
 		"rocket":
 			weapon = preload("res://src/weapons/rocket.gd").new()
+		"railgun":
+			weapon = preload("res://src/weapons/railgun.gd").new()
+		"flak":
+			weapon = preload("res://src/weapons/flak.gd").new()
+		"mines":
+			weapon = preload("res://src/weapons/mines.gd").new()
 		_:
 			push_error("[Ship] Unknown weapon: ", weapon_id)
 			return

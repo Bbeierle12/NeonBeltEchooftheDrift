@@ -1,0 +1,25 @@
+{
+  "id": "mines",
+  "name": "Proximity Mines",
+  "type": "explosive",
+  "slot_type": "utility",
+  "description": "Deploy sticky or proximity mines. Detonates on contact or when enemies get close.",
+
+  "damage": 180,
+  "proximity_radius": 60,
+  "deploy_rate": 2.0,
+  "heat_per_shot": 5,
+  "mine_lifetime": 20.0,
+  "arm_time": 0.3,
+
+  "ammo_type": "explosive",
+  "ammo_capacity": 24,
+  "ammo_per_shot": 1,
+
+  "modes": ["sticky", "proximity"],
+
+  "tags": ["trap", "utility", "explosive"],
+  "rarity": "uncommon",
+  "shop_price": 700,
+  "scrap_value": 175
+}

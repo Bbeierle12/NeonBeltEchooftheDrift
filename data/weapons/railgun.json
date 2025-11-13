@@ -1,0 +1,26 @@
+{
+  "id": "railgun",
+  "name": "M99 Railgun",
+  "type": "kinetic",
+  "slot_type": "heavy",
+  "description": "Hold to charge. Infinite pierce. Devastating single-target damage.",
+
+  "damage": 200,
+  "damage_charged": 600,
+  "charge_time": 1.5,
+  "fire_rate": 1.0,
+  "heat_per_shot": 35,
+  "heat_per_shot_charged": 50,
+  "projectile_speed": 2000,
+  "projectile_lifetime": 3.0,
+  "pierce": -1,
+
+  "ammo_type": "kinetic",
+  "ammo_capacity": 40,
+  "ammo_per_shot": 1,
+
+  "tags": ["precision", "charge", "pierce"],
+  "rarity": "uncommon",
+  "shop_price": 800,
+  "scrap_value": 200
+}
