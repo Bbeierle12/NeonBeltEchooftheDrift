@@ -1,0 +1,59 @@
+{
+  "id": "miner",
+  "displayName": "Prospect S",
+  "archetype": "Miner",
+  "description": "Utility-focused salvage ship. Deploy drones to collect loot, defuse volatiles, or attack.",
+  "unlockRequirement": "meta",
+  "stats": {
+    "hull": 100,
+    "shields": 90,
+    "speed": 210,
+    "turnRate": 300,
+    "acceleration": 650,
+    "energy": 100,
+    "energyRegen": 10,
+    "heatCapacity": 100,
+    "heatDissipation": 12
+  },
+  "hardpoints": {
+    "weaponSlots": ["A", "B"],
+    "utilitySlots": 3,
+    "internalBays": 0
+  },
+  "signature": {
+    "id": "deploy_drone",
+    "displayName": "Deploy Drone",
+    "description": "Deploy a collector, defuser, or gun drone. Max 3 active. Cycle types with R.",
+    "mechanics": {
+      "maxDrones": 3,
+      "droneTypes": ["collector", "defuser", "gun"],
+      "cooldown": 2.0,
+      "droneDuration": 30.0
+    }
+  },
+  "passive": {
+    "id": "salvage_expert",
+    "displayName": "Salvage Expert",
+    "description": "+30% scrap from all sources. Loot magnet range increased.",
+    "mechanics": {
+      "scrapBonus": 0.3,
+      "magnetRangeBonus": 50
+    }
+  },
+  "playstyle": {
+    "difficulty": "easy",
+    "tags": ["utility", "economy", "support"],
+    "recommendedWeapons": ["autocannon", "mines", "flak"],
+    "strengths": [
+      "Excellent economy",
+      "Drones provide tactical options",
+      "Auto-collection reduces risk",
+      "Defuse drones handle volatiles"
+    ],
+    "weaknesses": [
+      "Lower combat stats",
+      "Drone management required",
+      "Weaker in pure DPS"
+    ]
+  }
+}
