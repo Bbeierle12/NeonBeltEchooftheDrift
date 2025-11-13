@@ -39,8 +39,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Update score
-	score_label.text = "Score: %d" % GameManager.current_run.get("score", 0)
+	# Update score and wave
+	var run: Dictionary = GameManager.current_run
+	score_label.text = "Score: %d" % run.get("score", 0)
+
+	# Update wave number if in a run
+	if run.has("current_wave"):
+		if has_node("MarginContainer/VBoxContainer/Score/WaveLabel"):
+			var wave_label: Label = $MarginContainer/VBoxContainer/Score/WaveLabel
+			wave_label.text = "Wave: %d" % run.get("current_wave", 0)
 
 	# Update ammo if player has active weapon
 	if player_ship and player_ship.active_weapon:

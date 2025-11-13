@@ -384,6 +384,8 @@ func equip_weapon(weapon_id: String, slot: String) -> void:
 			weapon = preload("res://src/weapons/autocannon.gd").new()
 		"beam_lance":
 			weapon = preload("res://src/weapons/beam_lance.gd").new()
+		"rocket":
+			weapon = preload("res://src/weapons/rocket.gd").new()
 		_:
 			push_error("[Ship] Unknown weapon: ", weapon_id)
 			return

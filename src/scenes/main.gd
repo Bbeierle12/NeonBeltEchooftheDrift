@@ -1,15 +1,26 @@
 extends Node2D
-## Main Game Scene - Testing environment for Phase 1
+## Main Game Scene - Arcade Mode
 ##
 ## Handles:
 ## - Ship spawning
-## - Asteroid spawning (test)
-## - Basic game loop
+## - Wave-based progression
+## - Arcade mode game loop
+## - Game over / restart
 
 var ship_scene: PackedScene = preload("res://src/entities/ship.tscn")
-var asteroid_scene: PackedScene = preload("res://src/entities/asteroid.tscn")
+var wave_generator_script: Script = preload("res://src/systems/wave_generator.gd")
 
 var player_ship: Ship = null
+var wave_generator: WaveGenerator = null
+
+# Game state
+enum GameState { STARTING, PLAYING, BETWEEN_WAVES, GAME_OVER }
+var current_state: GameState = GameState.STARTING
+
+var current_wave_number: int = 0
+var max_waves: int = 10
+var between_wave_timer: float = 0.0
+var between_wave_delay: float = 3.0
 
 
 func _ready() -> void:
@@ -17,10 +28,71 @@ func _ready() -> void:
 	if not DataLoader.is_loaded:
 		await DataLoader.data_loaded
 
-	_spawn_player_ship()
-	_spawn_test_asteroids()
+	# Initialize game
+	_initialize_game()
 
-	print("[Main] Game scene loaded - Press F3 for debug info")
+	print("[Main] Arcade mode loaded - Press SPACE to start!")
+
+
+func _initialize_game() -> void:
+	"""Initialize all game systems"""
+	# Spawn player ship
+	_spawn_player_ship()
+
+	# Create wave generator
+	wave_generator = wave_generator_script.new()
+	add_child(wave_generator)
+	wave_generator.initialize(randi())  # Random seed for now
+
+	# Connect wave signals
+	wave_generator.wave_completed.connect(_on_wave_completed)
+	wave_generator.all_waves_completed.connect(_on_all_waves_completed)
+
+	# Start game when ready
+	current_state = GameState.STARTING
+
+
+func _process(delta: float) -> void:
+	match current_state:
+		GameState.STARTING:
+			# Wait for player input to start
+			if Input.is_action_just_pressed("fire"):
+				_start_game()
+
+		GameState.BETWEEN_WAVES:
+			between_wave_timer -= delta
+			if between_wave_timer <= 0:
+				_start_next_wave()
+
+
+func _start_game() -> void:
+	"""Start the game"""
+	print("[Main] Game started!")
+
+	# Start run in GameManager
+	GameManager.start_new_run("interceptor", "normal")
+
+	# Start first wave
+	current_wave_number = 0
+	_start_next_wave()
+
+	current_state = GameState.PLAYING
+
+
+func _start_next_wave() -> void:
+	"""Start the next wave"""
+	current_wave_number += 1
+
+	if current_wave_number > max_waves:
+		_game_victory()
+		return
+
+	print("[Main] Starting wave ", current_wave_number, "/", max_waves)
+
+	GameManager.start_wave(current_wave_number)
+	wave_generator.start_wave(current_wave_number)
+
+	current_state = GameState.PLAYING
 
 
 func _spawn_player_ship() -> void:
@@ -37,67 +109,54 @@ func _spawn_player_ship() -> void:
 
 	# Connect signals
 	player_ship.died.connect(_on_player_died)
-	player_ship.hull_changed.connect(_on_player_hull_changed)
-	player_ship.shields_changed.connect(_on_player_shields_changed)
-	player_ship.heat_changed.connect(_on_player_heat_changed)
 
 	print("[Main] Player ship spawned")
 
 
-func _spawn_test_asteroids() -> void:
-	"""Spawn some test asteroids"""
-	var screen_size: Vector2 = get_viewport_rect().size
+func _on_wave_completed(wave_number: int) -> void:
+	"""Handle wave completion"""
+	print("[Main] Wave ", wave_number, " completed!")
 
-	for i in range(5):
-		var asteroid: Asteroid = asteroid_scene.instantiate()
-		add_child(asteroid)
+	GameManager.complete_wave(wave_number)
 
-		# Random position
-		var spawn_pos: Vector2 = Vector2(
-			randf_range(100, screen_size.x - 100),
-			randf_range(100, screen_size.y - 100)
-		)
+	# Add wave clear bonus
+	GameManager.add_score(500 * wave_number, "Wave " + str(wave_number) + " clear bonus")
 
-		# Random velocity
-		var angle: float = randf() * TAU
-		var speed: float = randf_range(50, 120)
-		var velocity: Vector2 = Vector2.from_angle(angle) * speed
+	# Start between-wave period
+	current_state = GameState.BETWEEN_WAVES
+	between_wave_timer = between_wave_delay
 
-		# Initialize as Basalt (most common)
-		asteroid.initialize("basalt", Asteroid.AsteroidSize.LARGE, spawn_pos, velocity)
+	print("[Main] Next wave in ", between_wave_delay, " seconds...")
 
-	print("[Main] Spawned test asteroids")
+
+func _on_all_waves_completed() -> void:
+	"""Handle all waves completed"""
+	_game_victory()
+
+
+func _game_victory() -> void:
+	"""Handle game victory"""
+	print("[Main] === VICTORY! ===")
+	print("[Main] Final Score: ", GameManager.current_run.score)
+
+	GameManager.end_run("victory")
+
+	current_state = GameState.GAME_OVER
+
+	# Restart after delay
+	await get_tree().create_timer(5.0).timeout
+	get_tree().reload_current_scene()
 
 
 func _on_player_died(death_cause: String) -> void:
 	"""Handle player death"""
 	print("[Main] Player died: ", death_cause)
+	print("[Main] Final Score: ", GameManager.current_run.score)
+
 	GameManager.end_run(death_cause)
 
-	# TODO: Show game over screen
-	await get_tree().create_timer(2.0).timeout
+	current_state = GameState.GAME_OVER
+
+	# Restart after delay
+	await get_tree().create_timer(3.0).timeout
 	get_tree().reload_current_scene()
-
-
-func _on_player_hull_changed(current: float, maximum: float) -> void:
-	"""Forward hull changes to HUD"""
-	# TODO: Update HUD
-	pass
-
-
-func _on_player_shields_changed(current: float, maximum: float) -> void:
-	"""Forward shield changes to HUD"""
-	# TODO: Update HUD
-	pass
-
-
-func _on_player_heat_changed(current: float, maximum: float) -> void:
-	"""Forward heat changes to HUD"""
-	# TODO: Update HUD
-	pass
-
-
-func _input(event: InputEvent) -> void:
-	"""Handle debug input"""
-	if event.is_action_pressed("toggle_debug"):
-		OS.set_debug_mode(!OS.is_debug_build())
